@@ -55,7 +55,10 @@ const pizzaFunction = createSlice({
       }
     },
     removePizza(state, action: PayloadAction<number>) {
-      return state.filter((item) => item.orderId !== action.payload);
+      const updatedData = state.filter(
+        (item) => item.orderId !== action.payload
+      );
+      return updatedData;
     },
     clearBusket: () => initialState,
   },

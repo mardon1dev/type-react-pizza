@@ -18,7 +18,7 @@ const CartItem: React.FC<{ pizza: ProductType }> = ({ pizza }) => {
         />
         <div>
           <h3 className="font-bold text-lg">{pizza.name}</h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 capitalize">
             {pizza.options?.size}, {pizza.options?.dough}
           </p>
         </div>
@@ -44,7 +44,7 @@ const CartItem: React.FC<{ pizza: ProductType }> = ({ pizza }) => {
 
         <button
           className="flex items-center justify-center w-8 h-8 text-gray-400 hover:text-red-500"
-          onClick={() => dispatch(removePizza(pizza.id))}
+          onClick={() => dispatch(removePizza(pizza.orderId))}
         >
           <CloseOutlined />
         </button>

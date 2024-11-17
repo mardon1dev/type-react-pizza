@@ -30,7 +30,7 @@ export interface ProductType {
   size: { label: string; value: string }[];
   count: number;
   options?: PizzaOptions;
-  orderId?: number;
+  orderId: number;
 }
 
 const Home = () => {
