@@ -1,8 +1,16 @@
-import { QueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Categories from "../components/Categories";
 import { useAxios } from "../hook/useAxios";
 import { API_URL } from "../hook/useEnv";
 import PizzaItem from "../components/PizzaItem";
+import { useContext } from "react";
+import { Context } from "../context/Context";
+import SortDropdown from "../components/SortDropdown";
+
+export interface PizzaOptions {
+  dough: "thin" | "traditional";
+  size: "small" | "medium" | "big";
+}
 
 export interface ExtraType {
   id: number;
@@ -18,49 +26,55 @@ export interface ProductType {
   description: string;
   rating: number;
   reviews: number;
-  size: Array<ExtraType>;
+  dough: { label: string; value: string }[];
+  size: { label: string; value: string }[];
+  count: number;
+  options?: PizzaOptions;
+  orderId?: number;
 }
 
 const Home = () => {
-  const queryClient = new QueryClient();
+  const { categoryId, sortOption, categoryName } = useContext(Context);
 
   async function getAllPizzas() {
     try {
-      const res = await useAxios().get(`${API_URL}/products`);
+      const res = await useAxios().get(
+        `${API_URL}/products?categoryId=${categoryId == 1 ? "" : categoryId}`
+      );
       return await res.data;
     } catch (error) {
       console.error(error);
     }
   }
 
-  async function getAllCategories() {
-    try {
-      const res = await useAxios().get(`${API_URL}/categories`);
-      return await res.data;
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   const { data = [] } = useQuery({
-    queryKey: ["pizzas"],
+    queryKey: ["pizzas", categoryId],
     queryFn: getAllPizzas,
   });
 
-  const { data: categories = [] } = useQuery({
-    queryKey: ["categories"],
-    queryFn: getAllCategories,
-  });
+  const getSortedPizzas = () => {
+    switch (sortOption) {
+      case "price":
+        return [...data].sort((a, b) => a.price - b.price);
+      case "alphabet":
+        return [...data].sort((a, b) => a.name.localeCompare(b.name));
+      case "popularity":
+      default:
+        return [...data].sort((a, b) => b.rating - a.rating);
+    }
+  };
+
+  const sortedPizzas = getSortedPizzas();
 
   return (
     <div className="w-full py-[20px]">
       <div className="pt-[40px] pb-[32px] flex items-center justify-between">
         <Categories />
-        <p>Select option</p>
+        <SortDropdown />
       </div>
-        <h2>All pizzas</h2>
+      <h2>{categoryName}</h2>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 pt-[20px]">
-        {data.map((pizza: ProductType) => (
+        {sortedPizzas.map((pizza: ProductType) => (
           <PizzaItem key={pizza.id} pizza={pizza} />
         ))}
       </div>

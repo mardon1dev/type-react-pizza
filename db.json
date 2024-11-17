@@ -1,87 +1,118 @@
 {
   "categories": [
-    { "id": 1, "name": "All" },
-    { "id": 2, "name": "Meat" },
-    { "id": 3, "name": "Vegetarian" },
-    { "id": 4, "name": "Grilled" },
-    { "id": 5, "name": "Spicy" },
-    { "id": 6, "name": "Finished" }
+    { "id": 1, "name": "All", "isActive": true },
+    { "id": 2, "name": "Meat", "isActive": false },
+    { "id": 3, "name": "Vegetarian", "isActive": false },
+    { "id": 4, "name": "Grilled", "isActive": false },
+    { "id": 5, "name": "Spicy", "isActive": false },
+    { "id": 6, "name": "Newone", "isActive": false }
   ],
+
   "products": [
     {
       "id": 1,
       "name": "Pepperoni",
-      "price": 10.99,
+      "price": 10,
       "categories": { "id": 2, "name": "Meat" },
       "image": "https://bellissimo.uz/_next/image?url=https%3A%2F%2Fio.bellissimo.uz%2Fimages%2F601282db-7274-43e4-ac74-e8987d53dd6e.jpg&w=1920&q=100",
       "description": "Pepperoni, Mozzarella Cheese and Tomato Sauce",
       "rating": 4.5,
       "reviews": 10,
       "size": [
-        { "id": 1, "name": "Small" },
-        { "id": 2, "name": "Medium" },
-        { "id": 3, "name": "Large" }
-      ]
+        { "value": "small", "label": "Small" },
+        { "value": "meduim", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "dough": [
+        { "value": "thin", "label": "Thin" },
+        { "value": "traditional", "label": "Traditional" }
+      ],
+      "categoryId": 2,
+      "count": 0
     },
     {
       "id": 2,
       "name": "Margherita",
-      "price": 8.99,
+      "price": 8,
       "categories": { "id": 3, "name": "Vegetarian" },
       "image": "https://bellissimo.uz/_next/image?url=https%3A%2F%2Fio.bellissimo.uz%2Fimages%2Fd356188d-b9b4-4c06-9251-4429a17adfd5.jpg&w=1920&q=100",
       "description": "Tomato Sauce, Mozzarella Cheese, and Basil",
       "rating": 4.7,
       "reviews": 15,
       "size": [
-        { "id": 1, "name": "Small" },
-        { "id": 2, "name": "Medium" },
-        { "id": 3, "name": "Large" }
-      ]
+        { "value": "small", "label": "Small" },
+        { "value": "meduim", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "dough": [
+        { "value": "thin", "label": "Thin" },
+        { "value": "traditional", "label": "Traditional" }
+      ],
+      "categoryId": 3,
+      "count": 0
     },
     {
       "id": 3,
       "name": "Grilled Chicken Pizza",
-      "price": 12.99,
+      "price": 12,
       "categories": { "id": 4, "name": "Grilled" },
       "image": "https://bellissimo.uz/_next/image?url=https%3A%2F%2Fio.bellissimo.uz%2Fimages%2F17126e05-7876-45a6-be19-e6d0af0328a4.jpg&w=1920&q=100",
       "description": "Grilled Chicken, Mozzarella Cheese, and Barbecue Sauce",
       "rating": 4.6,
       "reviews": 20,
       "size": [
-        { "id": 1, "name": "Small" },
-        { "id": 2, "name": "Medium" },
-        { "id": 3, "name": "Large" }
-      ]
+        { "value": "small", "label": "Small" },
+        { "value": "meduim", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "dough": [
+        { "value": "thin", "label": "Thin" },
+        { "value": "traditional", "label": "Traditional" }
+      ],
+      "categoryId": 4,
+      "count": 0
     },
     {
       "id": 4,
       "name": "Spicy Inferno",
-      "price": 11.99,
+      "price": 11,
       "categories": { "id": 5, "name": "Spicy" },
       "image": "https://bellissimo.uz/_next/image?url=https%3A%2F%2Fio.bellissimo.uz%2Fimages%2F84e3a554-551a-45f6-9ac1-9c7870aa6f14.jpg&w=1920&q=100",
       "description": "Pepperoni, Jalapeños, Chili Flakes, and Hot Sauce",
       "rating": 4.3,
       "reviews": 8,
       "size": [
-        { "id": 1, "name": "Small" },
-        { "id": 2, "name": "Medium" },
-        { "id": 3, "name": "Large" }
-      ]
+        { "value": "small", "label": "Small" },
+        { "value": "meduim", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "dough": [
+        { "value": "thin", "label": "Thin" },
+        { "value": "traditional", "label": "Traditional" }
+      ],
+      "categoryId": 5,
+      "count": 0
     },
     {
       "id": 5,
       "name": "Four Cheese",
-      "price": 9.99,
-      "categories": { "id": 6, "name": "Finished" },
+      "price": 9,
+      "categories": { "id": 6, "name": "Newone" },
       "image": "https://bellissimo.uz/_next/image?url=https%3A%2F%2Fio.bellissimo.uz%2Fimages%2F405e4be1-3493-49d2-ab92-4eb256200ac5.jpg&w=1920&q=100",
       "description": "Mozzarella, Cheddar, Parmesan, and Gorgonzola",
       "rating": 4.8,
       "reviews": 25,
       "size": [
-        { "id": 1, "name": "Small" },
-        { "id": 2, "name": "Medium" },
-        { "id": 3, "name": "Large" }
-      ]
+        { "value": "small", "label": "Small" },
+        { "value": "meduim", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "dough": [
+        { "value": "thin", "label": "Thin" },
+        { "value": "traditional", "label": "Traditional" }
+      ],
+      "categoryId": 6,
+      "count": 0
     }
   ]
 }

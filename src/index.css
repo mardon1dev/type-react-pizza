@@ -6,4 +6,9 @@ body {
   font-family: Arial, sans-serif;
   background-color: rgb(255, 196, 0);
   padding: 40px;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar{
+  display: none;
 }
