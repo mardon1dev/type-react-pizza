@@ -47,10 +47,22 @@ const Home = () => {
     }
   }
 
-  const { data = [] } = useQuery({
+  const {
+    data = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["pizzas", categoryId],
     queryFn: getAllPizzas,
   });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching data</div>;
+  }
 
   const getSortedPizzas = () => {
     switch (sortOption) {
@@ -67,13 +79,13 @@ const Home = () => {
   const sortedPizzas = getSortedPizzas();
 
   return (
-    <div className="w-full py-[20px]">
+    <div className="w-full py-[20px]  container mx-auto">
       <div className="pt-[40px] pb-[32px] flex items-center justify-between">
         <Categories />
         <SortDropdown />
       </div>
       <h2>{categoryName}</h2>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 pt-[20px]">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 py-[20px]">
         {sortedPizzas.map((pizza: ProductType) => (
           <PizzaItem key={pizza.id} pizza={pizza} />
         ))}

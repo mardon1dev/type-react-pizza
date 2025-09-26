@@ -13,7 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full sticky top-[0px] h-[137px] bg-white border-b-[1px] border-[#F6F6F6] z-[10]">
+    <header className="w-full sticky top-[0] h-[137px] bg-white border-b-[1px] border-[#F6F6F6] z-[10]">
       <div className="container mx-auto w-full h-full">
         <div className="header w-full h-full flex items-center justify-between">
           <Link to="/" className="flex gap-5">
@@ -37,7 +37,8 @@ const Navbar = () => {
           >
             <span className="botder border-r-[1px] border-[#FFFFFF]/50 pr-[13px]">
               {pizzaStore.reduce(
-                (acc: number, item: ProductType) => acc + item.count * item.price,
+                (acc: number, item: ProductType) =>
+                  acc + item.count * item.price,
                 0
               )}{" "}
               $

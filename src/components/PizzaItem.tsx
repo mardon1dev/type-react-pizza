@@ -39,7 +39,7 @@ const PizzaItem: React.FC<{ pizza: ProductType }> = ({ pizza }) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-[280px]">
+    <div className="flex flex-col items-center justify-between w-full h-[400px] p-[20px] border border-[#F3F3F3] rounded-lg hover:shadow-[0_4px_4px_rgba(0,0,0,0.1)] transition-shadow">
       <img src={pizza.image} alt={pizza.name} className="w-[260px]" />
       <p className="text-[24px] font-bold">{pizza.name}</p>
       <div className="w-full">
